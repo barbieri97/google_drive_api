@@ -2,6 +2,7 @@ import argparse
 
 from actions.upload import GoogleDriveUpload
 from actions.download import GoogleDriveDownload
+from actions.list import GoogleDriveList
 from authentication.authenticate import service
 
 parser = argparse.ArgumentParser()
@@ -14,11 +15,16 @@ args = parser.parse_args()
 
 if __name__ == '__main__':
     if args.command == 'upload':
-        api = GoogleDriveUpload(service=service)
+        client = GoogleDriveUpload(service=service)
         if args.folder:
-            api.upload_to_folder(args.file, args.folder)
+            client.upload_to_folder(args.file, args.folder)
         else:
-            api.upload(args.file)
+            client.upload(args.file)
+    
     if args.command == 'download':
-        api = GoogleDriveDownload(service=service)
-        api.download(args.file)
+        client = GoogleDriveDownload(service=service)
+        client.download(args.file)
+    
+    if args.command == 'ls':
+        client = GoogleDriveList(service=service)
+        client.list(args.file)

@@ -19,7 +19,7 @@ class GoogleDriveDownload(GoogleDriveContentId):
             done = False
             while not done:
                 status, done = downloader.next_chunk()
-                print(f'Download: {int(status.progress() * 100)}', end='\r')
+                print(f'Download: {int(status.progress() * 100)}')
 
         except HttpError as error:
             print(f"An error occurred: {error}")
