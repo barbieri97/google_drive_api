@@ -38,7 +38,7 @@ def authenticate():
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open('/home/barbieri97/Documents/projetos/python/google-drive/'
-        'authentication/token.json', 'w') as token:
+                  'authentication/token.json', 'w') as token:
             token.write(creds.to_json())
     return creds
 

@@ -20,11 +20,11 @@ if __name__ == '__main__':
             client.upload_to_folder(args.file, args.folder)
         else:
             client.upload(args.file)
-    
+
     if args.command == 'download':
         client = GoogleDriveDownload(service=service)
         client.download(args.file)
-    
+
     if args.command == 'ls':
         client = GoogleDriveList(service=service)
         client.list(args.file)
